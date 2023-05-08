@@ -1,10 +1,16 @@
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+import { RecoilRoot } from 'recoil';
 import { CreateGroup } from './CreateGroup';
 
-const { render, screen } = require('@testing-library/react');
-const { default: userEvent } = require('@testing-library/user-event');
-
 const renderComponent = () => {
-  render(<CreateGroup />);
+  render(
+    <RecoilRoot>
+      <CreateGroup />
+    </RecoilRoot>
+  );
+
   const input = screen.getByPlaceholderText('2023 제주도 여행');
   const saveBtn = screen.getByText('저장');
   const errorMessage = screen.queryByText('그룹 이름을 입력해주세요.');
