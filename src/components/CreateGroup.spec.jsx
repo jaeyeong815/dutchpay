@@ -35,7 +35,7 @@ describe('그룹 생성 페이지', () => {
     const { saveBtn, errorMessage } = renderComponent();
 
     await userEvent.click(saveBtn);
-    expect(errorMessage).not.toBeNull();
+    expect(errorMessage).toHaveAttribute('data-valid', 'false');
   });
 
   test('그룹명을 입력 후 "저장" 버튼클릭 시, 저장 성공', async () => {
@@ -44,6 +44,6 @@ describe('그룹 생성 페이지', () => {
     await userEvent.type(input, '예시 그룹명');
     await userEvent.click(saveBtn);
 
-    expect(errorMessage).toBeNull();
+    expect(errorMessage).toHaveAttribute('data-valid', 'true');
   });
 });
