@@ -1,3 +1,5 @@
+import { AddExpenseForm } from './AddExpenseForm';
+
 export const ExpenseMain = () => {
   return (
     <div>
@@ -5,7 +7,7 @@ export const ExpenseMain = () => {
       {/* Left pane */}
       <div>
         {/* Todo: 더치페이 헤더 렌더링 */}
-        {/* Todo: 비용 추가 폼 컴포넌트 렌더링 */}
+        <AddExpenseForm />
         {/* Todo: 정산 결과 컴포넌트 렌더링 */}
       </div>
       {/* Right pane */}
