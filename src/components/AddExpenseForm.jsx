@@ -12,10 +12,14 @@ export const AddExpenseForm = () => {
 
   const today = new Date();
   const [date, setDate] = useState(
-    [today.getFullYear(), today.getMonth() + 1, today.getDate()].join('-')
+    [
+      today.getFullYear(),
+      `0${today.getMonth() + 1}`.slice(-2),
+      `0${today.getDate()}`.slice(-2),
+    ].join('-')
   );
   const [desc, setDesc] = useState('');
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(undefined);
   const [payer, setPayer] = useState(null);
 
   const [isDescValid, setIsDescValid] = useState(false);
@@ -42,10 +46,9 @@ export const AddExpenseForm = () => {
       const newExpense = { date, desc, amount, payer };
       setExpense((prev) => [...prev, newExpense]);
     }
-
-    console.log(isDescValid);
     setValidated(true);
   };
+
   return (
     <StyledWrapper>
       <Form noValidate onSubmit={handleSubmit}>
@@ -106,6 +109,8 @@ export const AddExpenseForm = () => {
                 <option disabled value=''>
                   누가 결제했나요?
                 </option>
+                <option value='철수'>철수</option>
+                <option value='영수'>영수</option>
                 {members?.map((member) => (
                   <option key={member} value={member}>
                     {member}
