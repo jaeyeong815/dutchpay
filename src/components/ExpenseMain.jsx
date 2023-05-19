@@ -1,4 +1,5 @@
 import { AddExpenseForm } from './AddExpenseForm';
+import { ExpenseTable } from './ExpenseTable';
 
 export const ExpenseMain = () => {
   return (
@@ -13,7 +14,7 @@ export const ExpenseMain = () => {
       {/* Right pane */}
       <div>
         {/* Todo: 그룹명 헤더 렌더링 */}
-        {/* Todo: 비용 리스트 컴포넌트 렌더링 */}
+        <ExpenseTable />
       </div>
     </div>
   );
