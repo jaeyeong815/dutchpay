@@ -2,8 +2,10 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { Col, Container, Row } from 'react-bootstrap';
 import { groupNameState } from '../state/groupName';
+import { ServiceLogo } from './shared/ServiceLogo';
 import { AddExpenseForm } from './AddExpenseForm';
 import { ExpenseTable } from './ExpenseTable';
+import { SettlementSummary } from './SettlementSummary';
 
 export const ExpenseMain = () => {
   return (
@@ -22,9 +24,15 @@ export const ExpenseMain = () => {
 
 const LeftPane = () => (
   <Container>
-    {/* Todo: 더치페이 헤더 렌더링 */}
-    <AddExpenseForm />
-    {/* Todo: 정산 결과 컴포넌트 렌더링 */}
+    <Row>
+      <ServiceLogo />
+    </Row>
+    <Row>
+      <AddExpenseForm />
+    </Row>
+    <Row>
+      <SettlementSummary />
+    </Row>
   </Container>
 );
 const RightPane = () => {
