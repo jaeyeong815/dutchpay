@@ -102,7 +102,7 @@ export const SettlementSummary = () => {
             {minimumTransactions.map((transaction, idx) => (
               <li key={`transaction-${idx}`}>
                 <span>
-                  {transaction.sender} ➡️ {transaction.receiver}:{' '}
+                  {transaction.sender}: {transaction.receiver}에게{' '}
                   {amountFormatting(transaction.amount)}원 보내기
                 </span>
               </li>

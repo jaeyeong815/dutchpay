@@ -80,20 +80,20 @@ describe('비용 정산 메인 페이지', () => {
     });
   });
 
-  describe('정산 결과 컴포넌트', () => {
-    renderComponent();
-    test('정산 결과 컴포넌트가 렌더링 되는가?', () => {
-      const component = screen.getByText(/정산은 이렇게/i);
-      expect(component).toBeInTheDocument();
-    });
-  });
-
   describe('비용 리스트 컴포넌트', () => {
     test('비용 리스트 컴포넌트가 렌더링 되는가?', () => {
       renderComponent();
 
       const expenseListComponent = screen.getByTestId('expenseList');
       expect(expenseListComponent).toBeInTheDocument();
+    });
+  });
+
+  describe('정산 결과 컴포넌트', () => {
+    test('정산 결과 컴포넌트가 렌더링 되는가?', () => {
+      renderComponent();
+      const component = screen.getByText(/정산은 이렇게/i);
+      expect(component).toBeInTheDocument();
     });
 
     describe('새로운 비용이 입력 되었을 때,', () => {
@@ -117,7 +117,7 @@ describe('비용 정산 메인 페이지', () => {
         const descValue = within(expenseListComponent).getByText('장보기');
         expect(descValue).toBeInTheDocument();
 
-        const amountValue = within(expenseListComponent).getByText('30000 원');
+        const amountValue = within(expenseListComponent).getByText('30,000 원');
         expect(amountValue).toBeInTheDocument();
 
         const payerValue = within(expenseListComponent).getByText('철수');
@@ -127,10 +127,10 @@ describe('비용 정산 메인 페이지', () => {
       test('정산 결과도 업데이트 된다.', async () => {
         await addNewExpense();
 
-        const totalText = screen.getByText(/2명 - 총 30000 원 지출/i);
+        const totalText = screen.getByText(/2 명이 총 30,000 원 지출/i);
         expect(totalText).toBeInTheDocument();
 
-        const transactionText = screen.getByText(/영희가 철수에게 15000 원/i);
+        const transactionText = screen.getByText(/영희: 철수에게 15,000원/i);
         expect(transactionText).toBeInTheDocument();
       });
     });
