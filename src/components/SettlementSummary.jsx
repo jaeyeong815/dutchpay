@@ -2,6 +2,7 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { expensesState } from '../state/expenses';
 import { groupMembersState } from '../state/groupMembers';
+import { amountFormatting } from '../amountFormatting';
 
 const calculateMinimumTransaction = (expenses, members, amountPerPerson) => {
   const minimumTransactions = [];
@@ -70,20 +71,21 @@ export const SettlementSummary = () => {
   return (
     <StyledWrapper>
       <StyledTitle>2. 정산은 이렇게!</StyledTitle>
-      {totalExpenseAmount >= 0 && groupMembersCount >= 0 && (
+      {totalExpenseAmount > 0 && groupMembersCount > 0 && (
         <>
           <StyledSummary>
             <span>
-              {groupMembersCount} 명이 총 {totalExpenseAmount} 원 지출
+              {groupMembersCount} 명이 총 {amountFormatting(totalExpenseAmount)} 원 지출
             </span>
             <br />
-            <span>한 사람 당 {splitAmount} 원</span>
+            <span>한 사람 당 {amountFormatting(splitAmount)} 원</span>
           </StyledSummary>
           <StyledUl>
             {minimumTransactions.map((transaction, idx) => (
               <li key={`transaction-${idx}`}>
                 <span>
-                  {transaction.sender} ➡️ {transaction.receiver}: {transaction.amount} 원 보내기
+                  {transaction.sender} ➡️ {transaction.receiver}:{' '}
+                  {amountFormatting(transaction.amount)}원 보내기
                 </span>
               </li>
             ))}

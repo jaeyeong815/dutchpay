@@ -2,6 +2,7 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { Table } from 'react-bootstrap';
 import { expensesState } from '../state/expenses';
+import { amountFormatting } from '../amountFormatting';
 import { OverlayWrapper } from './shared/OverlayWrapper';
 
 export const ExpenseTable = () => {
@@ -23,7 +24,7 @@ export const ExpenseTable = () => {
               <td>{date}</td>
               <td>{desc}</td>
               <td>{payer}</td>
-              <td>{parseInt(amount)} 원</td>
+              <td>{amountFormatting(parseInt(amount))} 원</td>
             </tr>
           ))}
         </StyledTbody>
