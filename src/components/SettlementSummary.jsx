@@ -1,8 +1,12 @@
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+import * as htmlToImage from 'html-to-image';
+
 import { expensesState } from '../state/expenses';
 import { groupMembersState } from '../state/groupMembers';
 import { amountFormatting } from '../amountFormatting';
+
+import * as Icon from 'react-bootstrap-icons';
 
 const calculateMinimumTransaction = (expenses, members, amountPerPerson) => {
   const minimumTransactions = [];
@@ -67,13 +71,27 @@ export const SettlementSummary = () => {
   const groupMembersCount = members.length;
   const splitAmount = totalExpenseAmount / groupMembersCount;
 
+  const exportToPng = (e) => {
+    htmlToImage
+      .toPng(e.currentTarget.parentNode)
+      .then((dataUrl) => {
+        let img = new Image();
+        img.src = dataUrl;
+        document.body.appendChild(img);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const minimumTransactions = calculateMinimumTransaction(expenses, members, splitAmount);
   return (
-    <StyledWrapper>
+    <StyledWrapper className='position-relative'>
+      <SytledExportBtn onClick={exportToPng}>
+        <Icon.Download size={20} />
+      </SytledExportBtn>
       <StyledTitle>2. 정산은 이렇게!</StyledTitle>
       {totalExpenseAmount > 0 && groupMembersCount > 0 && (
         <>
-          <StyledSummary>
+          <StyledSummary color='royalblue' size={96}>
             <span>
               {groupMembersCount} 명이 총 {amountFormatting(totalExpenseAmount)} 원 지출
             </span>
@@ -111,6 +129,15 @@ const StyledTitle = styled.h3`
   font-weight: 700;
   letter-spacing: 0.25px;
   margin-bottom: 15px;
+`;
+
+const SytledExportBtn = styled.button`
+  position: absolute;
+  top: 0.625rem;
+  right: 1.25rem;
+  background-color: transparent;
+  color: #fffbfb;
+  border: none;
 `;
 
 const StyledUl = styled.ul`
