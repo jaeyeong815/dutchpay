@@ -109,8 +109,6 @@ export const AddExpenseForm = () => {
                 <option disabled value=''>
                   누가 결제했나요?
                 </option>
-                <option value='철수'>철수</option>
-                <option value='영수'>영수</option>
                 {members?.map((member) => (
                   <option key={member} value={member}>
                     {member}
@@ -184,7 +182,6 @@ const StyledTitle = styled.h3`
   text-align: center;
   font-size: 40px;
   font-weight: 700;
-  /* line-height: 48px; */
   letter-spacing: 0.25px;
   margin-bottom: 15px;
 `;

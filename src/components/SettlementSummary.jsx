@@ -1,4 +1,5 @@
 import { useRecoilValue } from 'recoil';
+import styled from 'styled-components';
 import { expensesState } from '../state/expenses';
 import { groupMembersState } from '../state/groupMembers';
 
@@ -67,16 +68,18 @@ export const SettlementSummary = () => {
 
   const minimumTransactions = calculateMinimumTransaction(expenses, members, splitAmount);
   return (
-    <div>
-      <h3>2. 정산은 이렇게!</h3>
-      {totalExpenseAmount > 0 && groupMembersCount > 0 && (
+    <StyledWrapper>
+      <StyledTitle>2. 정산은 이렇게!</StyledTitle>
+      {totalExpenseAmount >= 0 && groupMembersCount >= 0 && (
         <>
-          <span>
-            {groupMembersCount} 명이 총 {totalExpenseAmount} 원 지출
-          </span>
-          <br />
-          <span>한 사람 당 {splitAmount} 원</span>
-          <ul>
+          <StyledSummary>
+            <span>
+              {groupMembersCount} 명이 총 {totalExpenseAmount} 원 지출
+            </span>
+            <br />
+            <span>한 사람 당 {splitAmount} 원</span>
+          </StyledSummary>
+          <StyledUl>
             {minimumTransactions.map((transaction, idx) => (
               <li key={`transaction-${idx}`}>
                 <span>
@@ -84,9 +87,46 @@ export const SettlementSummary = () => {
                 </span>
               </li>
             ))}
-          </ul>
+          </StyledUl>
         </>
       )}
-    </div>
+    </StyledWrapper>
   );
 };
+
+const StyledWrapper = styled.div`
+  font-size: 20px;
+  padding: 50px;
+  background-color: #683ba1;
+  border-radius: 15px;
+  box-shadow: 3px 0px 4px rgba(0, 0, 0, 0.25);
+  color: #fffbfb;
+  text-align: center;
+`;
+
+const StyledTitle = styled.h3`
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 0.25px;
+  margin-bottom: 15px;
+`;
+
+const StyledUl = styled.ul`
+  font-weight: 500;
+  margin-top: 31px;
+  line-height: 150%;
+  list-style-type: square;
+
+  list::marker {
+    animation: blinker 1s infinite linear;
+  }
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+`;
+
+const StyledSummary = styled.div`
+  margin-top: 31px;
+`;
