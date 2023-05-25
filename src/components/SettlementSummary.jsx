@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
+import { toPng } from 'html-to-image';
 import styled from 'styled-components';
-import * as htmlToImage from 'html-to-image';
 
 import { expensesState } from '../state/expenses';
 import { groupMembersState } from '../state/groupMembers';
@@ -72,12 +72,14 @@ export const SettlementSummary = () => {
   const splitAmount = totalExpenseAmount / groupMembersCount;
 
   const exportToPng = (e) => {
-    htmlToImage
-      .toPng(e.currentTarget.parentNode)
+    toPng(e.currentTarget.parentNode, {
+      filter: (node) => node.tagName !== 'BUTTON',
+    })
       .then((dataUrl) => {
-        let img = new Image();
-        img.src = dataUrl;
-        document.body.appendChild(img);
+        const link = document.createElement('a');
+        link.download = 'settlement-summary.png';
+        link.href = dataUrl;
+        link.click();
       })
       .catch((err) => console.log(err));
   };
@@ -85,7 +87,7 @@ export const SettlementSummary = () => {
   const minimumTransactions = calculateMinimumTransaction(expenses, members, splitAmount);
   return (
     <StyledWrapper className='position-relative'>
-      <SytledExportBtn onClick={exportToPng}>
+      <SytledExportBtn data-testid='btn-download' onClick={exportToPng}>
         <Icon.Download size={20} />
       </SytledExportBtn>
       <StyledTitle>2. 정산은 이렇게!</StyledTitle>
@@ -138,6 +140,11 @@ const SytledExportBtn = styled.button`
   background-color: transparent;
   color: #fffbfb;
   border: none;
+
+  &:hover {
+    color: #683ba1;
+    filter: brightness(20%);
+  }
 `;
 
 const StyledUl = styled.ul`
