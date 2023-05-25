@@ -72,6 +72,11 @@ export const SettlementSummary = () => {
   const splitAmount = totalExpenseAmount / groupMembersCount;
 
   const exportToPng = (e) => {
+    if (minimumTransactions.length === 0) {
+      alert('비용을 추가해주세요!');
+      return;
+    }
+
     toPng(e.currentTarget.parentNode, {
       filter: (node) => node.tagName !== 'BUTTON',
     })
