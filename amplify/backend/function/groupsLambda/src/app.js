@@ -212,43 +212,38 @@ app.post(path, function (req, res) {
   });
 });
 
-/**************************************
- * HTTP remove method to delete object *
- ***************************************/
+/************************************
+ * HTTP put method for adding an expense to the group - 비용 추가 API *
+ *************************************/
 
-app.delete(path + '/object' + hashKeyPath + sortKeyPath, function (req, res) {
-  const params = {};
-  if (req.apiGateway) {
-    params[partitionKeyName] =
-      req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
-  } else {
-    params[partitionKeyName] = req.params[partitionKeyName];
-    try {
-      params[partitionKeyName] = convertUrlType(req.params[partitionKeyName], partitionKeyType);
-    } catch (err) {
-      res.statusCode = 500;
-      res.json({ error: 'Wrong column type ' + err });
-    }
-  }
-  if (hasSortKey) {
-    try {
-      params[sortKeyName] = convertUrlType(req.params[sortKeyName], sortKeyType);
-    } catch (err) {
-      res.statusCode = 500;
-      res.json({ error: 'Wrong column type ' + err });
-    }
+app.put(`${path}${hashKeyPath}/expenses`, function (req, res) {
+  const guid = req.params[partitionKeyName];
+  const { expense } = req.body;
+
+  if (expense === null || expense === undefined || !expense.payer || !expense.amount) {
+    res.statusCode = 400;
+    res.json({ error: 'invalid expense object' });
   }
 
-  let removeItemParams = {
+  let updateItemParams = {
     TableName: tableName,
-    Key: params,
+    Key: {
+      [partitionKeyName]: guid,
+    },
+    UpdateExpression: 'SET expenses = list_append(if_not_exists(expenses, :empty_list), :vals)',
+    ExpressionAttributeValues: {
+      ':empty_list': [],
+      ':vals': [expense],
+    },
   };
-  dynamodb.delete(removeItemParams, (err, data) => {
+
+  dynamodb.update(updateItemParams, (err, data) => {
     if (err) {
       res.statusCode = 500;
-      res.json({ error: err, url: req.url });
+      res.json({ error: err });
     } else {
-      res.json({ url: req.url, data: data });
+      res.statusCode = 200;
+      res.json({ data });
     }
   });
 });
