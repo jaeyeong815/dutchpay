@@ -1,0 +1,8 @@
+{
+  "httpMethod": "PUT",
+  "path": "/groups/guid값입력필요/members",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"members\":[\"kevin\", \"jung\"]}"
+}
