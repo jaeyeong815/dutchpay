@@ -1,0 +1,8 @@
+{
+  "httpMethod": "PUT",
+  "path": "/groups/guid값입력필요/expenses",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"expense\":{\"payer\": \"jung\", \"amount\": 20000, \"paid_at\": \"2022-08-25\", \"description\": \"gas\" }}"
+}
