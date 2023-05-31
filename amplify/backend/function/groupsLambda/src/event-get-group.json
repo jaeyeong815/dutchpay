@@ -1,0 +1,7 @@
+{
+  "httpMethod": "GET",
+  "path": "/groups/guid값입력필요",
+  "headers": {
+    "Content-Type": "application/json"
+  }
+}
