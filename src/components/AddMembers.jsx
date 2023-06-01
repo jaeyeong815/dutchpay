@@ -1,25 +1,44 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import { API } from 'aws-amplify';
 import { Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import { InputTags } from 'react-bootstrap-tagsinput';
+
 import { ROUTES } from '../routes';
+import { CenteredOverlayForm } from './shared/CenteredOverlayForm';
 import { groupMembersState } from '../state/groupMembers';
 import { groupNameState } from '../state/groupName';
-import { CenteredOverlayForm } from './shared/CenteredOverlayForm';
+import { groupIdState } from '../state/groupId';
 
 export const AddMembers = () => {
   const [groupMembers, setGroupMembers] = useRecoilState(groupMembersState);
   const groupName = useRecoilValue(groupNameState);
+  const guid = useRecoilValue(groupIdState);
   const [validated, setValidated] = useState(false);
   const navigate = useNavigate();
+
+  const saveGroupMembers = () => {
+    API.put('groupsApi', `/groups/${guid}/members`, {
+      body: {
+        members: groupMembers,
+      },
+    })
+      .then((res) => {
+        navigate(ROUTES.EXPENSE_MAIN);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(error.response.data.error);
+      });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setValidated(true);
     if (groupMembers.length > 0) {
-      navigate(ROUTES.EXPENSE_MAIN);
+      saveGroupMembers();
     }
   };
 
