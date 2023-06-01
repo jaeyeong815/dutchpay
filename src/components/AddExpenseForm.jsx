@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { API } from 'aws-amplify';
 import styled from 'styled-components';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 
 import { groupMembersState } from '../state/groupMembers';
 import { expensesState } from '../state/expenses';
+import { groupIdState } from '../state/groupId';
 
 export const AddExpenseForm = () => {
   const members = useRecoilValue(groupMembersState);
   const setExpense = useSetRecoilState(expensesState);
+  const guid = useRecoilValue(groupIdState);
 
   const today = new Date();
   const [date, setDate] = useState(
@@ -39,12 +42,27 @@ export const AddExpenseForm = () => {
     return descValid && amountValid && payerValid;
   };
 
+  const saveExpense = (expense) => {
+    API.put('groupsApi', `/groups/${guid}/expenses`, {
+      body: {
+        expense,
+      },
+    })
+      .then((res) => {
+        setExpense((prev) => [...prev, expense]);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(error?.response?.data?.error);
+      });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (checkFormValidity()) {
       const newExpense = { date, desc, amount, payer };
-      setExpense((prev) => [...prev, newExpense]);
+      saveExpense(newExpense);
     }
     setValidated(true);
   };
