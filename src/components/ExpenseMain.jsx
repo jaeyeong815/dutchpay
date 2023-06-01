@@ -1,13 +1,16 @@
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { Col, Container, Row } from 'react-bootstrap';
+
 import { groupNameState } from '../state/groupName';
 import { ServiceLogo } from './shared/ServiceLogo';
 import { AddExpenseForm } from './AddExpenseForm';
 import { ExpenseTable } from './ExpenseTable';
 import { SettlementSummary } from './SettlementSummary';
+import { useGroupData } from '../hooks/useGroupData';
 
 export const ExpenseMain = () => {
+  useGroupData();
   return (
     <Container fluid>
       <Row>
