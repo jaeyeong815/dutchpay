@@ -6,7 +6,7 @@ import { Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import { InputTags } from 'react-bootstrap-tagsinput';
 
-import { ROUTES } from '../routes';
+import { ROUTE_UTILS } from '../routes';
 import { CenteredOverlayForm } from './shared/CenteredOverlayForm';
 import { groupMembersState } from '../state/groupMembers';
 import { groupNameState } from '../state/groupName';
@@ -26,7 +26,7 @@ export const AddMembers = () => {
       },
     })
       .then((res) => {
-        navigate(ROUTES.EXPENSE_MAIN);
+        navigate(ROUTE_UTILS.EXPENSE_MAIN(guid));
       })
       .catch((error) => {
         console.log(error);

@@ -4,7 +4,7 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import { API } from 'aws-amplify';
 import { Form } from 'react-bootstrap';
 
-import { ROUTES } from '../routes';
+import { ROUTE_UTILS } from '../routes';
 import { CenteredOverlayForm } from './shared/CenteredOverlayForm';
 import { groupNameState } from '../state/groupName';
 import { groupIdState } from '../state/groupId';
@@ -25,7 +25,7 @@ export const CreateGroup = () => {
       .then(({ data }) => {
         const { guid } = data;
         setGroupId(guid);
-        navigate(ROUTES.ADD_MEMBERS);
+        navigate(ROUTE_UTILS.ADD_MEMBERS(guid));
       })
       .catch((error) => {
         console.error(error);
