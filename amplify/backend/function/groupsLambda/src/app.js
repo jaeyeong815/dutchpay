@@ -10,7 +10,7 @@ const AWS = require('aws-sdk');
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware');
 const bodyParser = require('body-parser');
 const express = require('express');
-const uuidv1 = require('uuid').v1;
+const { v4: uuidv4 } = require('uuid');
 
 AWS.config.update({ region: process.env.TABLE_REGION });
 
@@ -111,7 +111,7 @@ app.put(`${path}${hashKeyPath}/members`, function (req, res) {
 
 app.post(path, function (req, res) {
   const { groupName } = req.body;
-  const guid = uuidv1();
+  const guid = uuidv4();
 
   if (!groupName || groupName.trim().length === 0) {
     res.statusCode = 400;
