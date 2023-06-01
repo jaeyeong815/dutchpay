@@ -1,12 +1,16 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
+import { Amplify } from 'aws-amplify';
 
+import awsmobile from './aws-exports';
 import { ROUTES } from './routes';
 import { CreateGroup } from './components/CreateGroup';
 import { AddMembers } from './components/AddMembers';
 import { ExpenseMain } from './components/ExpenseMain';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+Amplify.configure(awsmobile);
 
 const App = () => {
   return (
