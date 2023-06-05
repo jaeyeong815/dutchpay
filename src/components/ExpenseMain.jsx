@@ -79,6 +79,7 @@ const StyledGroupName = styled.h2`
   text-align: center;
   font-weight: 700;
   font-size: 48px;
+  word-break: keep-all;
 `;
 
 const StyledGapRow = styled(Row)`

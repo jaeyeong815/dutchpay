@@ -24,7 +24,7 @@ export const ExpenseTable = () => {
               <td>{date}</td>
               <td>{desc}</td>
               <td>{payer}</td>
-              <td>{amountFormatting(parseInt(amount))} 원</td>
+              <td>{amountFormatting(parseInt(amount))}원</td>
             </tr>
           ))}
         </StyledTbody>
@@ -38,6 +38,7 @@ const StyledThead = styled.thead`
   text-align: center;
   font-weight: 700;
   font-size: 24px;
+  word-break: keep-all;
 `;
 
 const StyledTbody = styled.tbody`
@@ -45,5 +46,6 @@ const StyledTbody = styled.tbody`
     text-align: center;
     font-weight: 400;
     font-size: 24px;
+    word-break: keep-all;
   }
 `;

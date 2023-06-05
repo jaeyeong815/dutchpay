@@ -202,4 +202,5 @@ const StyledTitle = styled.h3`
   font-weight: 700;
   letter-spacing: 0.25px;
   margin-bottom: 15px;
+  word-break: keep-all;
 `;

@@ -100,10 +100,10 @@ export const SettlementSummary = () => {
         <>
           <StyledSummary color='royalblue' size={96}>
             <span>
-              {groupMembersCount} 명이 총 {amountFormatting(totalExpenseAmount)} 원 지출
+              {groupMembersCount}명이 총 {amountFormatting(totalExpenseAmount)}원 지출
             </span>
             <br />
-            <span>한 사람 당 {amountFormatting(splitAmount)} 원</span>
+            <span>한 사람 당 {amountFormatting(splitAmount)}원</span>
           </StyledSummary>
           <StyledUl>
             {minimumTransactions.map((transaction, idx) => (
@@ -140,6 +140,7 @@ const StyledTitle = styled.h3`
   font-weight: 700;
   letter-spacing: 0.25px;
   margin-bottom: 15px;
+  word-break: keep-all;
 `;
 
 const SytledExportBtn = styled.button`
@@ -161,8 +162,10 @@ const StyledUl = styled.ul`
   margin-top: 31px;
   line-height: 150%;
   list-style-type: square;
+  word-break: keep-all;
 `;
 
 const StyledSummary = styled.div`
   margin-top: 31px;
+  word-break: keep-all;
 `;
