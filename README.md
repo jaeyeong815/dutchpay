@@ -19,13 +19,13 @@ AWS Amplify로 배포되었습니다.
 ## 설계
 
 ### 아키텍처 다이어그램
-<img alt='아키텍처다이어그램' src='https://github.com/jaeyeong815/dutchpay/assets/85178602/39ef1e92-1bca-4136-b629-fb37229bb5cc' width='700' />
+<img alt='아키텍처다이어그램' src='https://github.com/jaeyeong815/dutchpay/assets/85178602/1a881544-f028-4763-bd73-94deb487f2a3' width='700' />
 
 ### 시퀀스 다이어그램
-<img alt='시퀀스다이어그램' src='https://github.com/jaeyeong815/dutchpay/assets/85178602/d78b48ce-03b8-466e-ab87-46d2b97cfdaf' width='700' />
+<img alt='시퀀스다이어그램' src='https://github.com/jaeyeong815/dutchpay/assets/85178602/405812c0-7eb2-4e04-9c50-c534e5de96ee' width='700' />
 
 ### 컴포넌트 다이어그램
-<img alt='컴포넌트 다이어그램' src='https://github.com/jaeyeong815/dutchpay/assets/85178602/c6f78481-b839-48fd-b647-84cf5bf8d9ea' width='700' />
+<img alt='컴포넌트 다이어그램' src='https://github.com/jaeyeong815/dutchpay/assets/85178602/22e0748c-943a-4d38-811e-f276f9b64278' width='700' />
 
 ## 사용한 기술
 
@@ -44,22 +44,22 @@ Styled-Components
 
 ### 1. 모임 그룹 생성하기
 
-![그룹생성](https://github.com/jaeyeong815/dutchpay/assets/85178602/8ba36bbe-053c-4d83-9464-5d77302c7815)
+![그룹생성](https://github.com/jaeyeong815/dutchpay/assets/85178602/664d0e81-4201-4a6d-b5b4-5517403c9cab)
 
 ### 2. 그룹 멤버 추가하기
 
-![멤버추가](https://github.com/jaeyeong815/dutchpay/assets/85178602/28383016-9ae2-487f-a60c-071e465261e9)
+![멤버추가](https://github.com/jaeyeong815/dutchpay/assets/85178602/286e4991-19d8-4607-88bf-e18bc88116fc)
 
 ### 3. 지출 내역 추가하기
 
-https://github.com/jaeyeong815/dutchpay/assets/85178602/f8fc5041-a272-42ed-8011-a2b1f0ebc6c7
+https://github.com/jaeyeong815/dutchpay/assets/85178602/8829fdb1-580f-43f0-be95-4d7d60cb2d12
 
 ### 4. 정산 내역 공유하기
 
 ### 4-1) 이미지 import
 
-![이미지공유](https://github.com/jaeyeong815/dutchpay/assets/85178602/46117cc1-f1ed-4536-82a0-762a1577ad00)
+![이미지공유](https://github.com/jaeyeong815/dutchpay/assets/85178602/070e19db-e646-46c2-839c-82fd41869cce)
 
 ### 4-2) 링크 공유
 
-![링크공유](https://github.com/jaeyeong815/dutchpay/assets/85178602/670c45c0-e9d3-457b-abc4-34b7338a6ada)
+![링크공유](https://github.com/jaeyeong815/dutchpay/assets/85178602/85f672c9-b643-463b-952e-35110c0c2042)
