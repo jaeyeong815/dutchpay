@@ -27,8 +27,8 @@ export const ExpenseMain = () => {
 
   return (
     <Container fluid>
-      <Row>
-        <Col xs={12} md={5} sm={5}>
+      <Row className='justify-content-center'>
+        <Col xs={10} sm={10} md={7} lg={5}>
           <LeftPane />
         </Col>
         <Col>
