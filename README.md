@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# 더치페이 서비스 (dutchpay)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+여러 명이 각자 계산한 뒤 최종 정산을 할 때 누구에게 얼마를 줘야하는지 계산을 도와주는 더치페이 서비스 <br>
+테스트 코드를 먼저 작성하는 TDD를 활용하여 개발하였습니다.
 
-## Available Scripts
+## 구현 기능
 
-In the project directory, you can run:
+- 모임 그룹 생성
+- 그룹 멤버 추가
+- 지출내역 등록
+- 멤버 별 정산 내역 계산
+- 이미지 공유 및 링크 공유
 
-### `npm start`
+## 배포
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[배포링크](https://main.d2iqmzzrqvuaao.amplifyapp.com/group) <br>
+AWS Amplify로 배포되었습니다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 설계
 
-### `npm test`
+### 아키텍처 다이어그램
+<img alt='아키텍처다이어그램' src='https://github.com/jaeyeong815/dutchpay/assets/85178602/39ef1e92-1bca-4136-b629-fb37229bb5cc' width='700' />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 시퀀스 다이어그램
+<img alt='시퀀스다이어그램' src='https://github.com/jaeyeong815/dutchpay/assets/85178602/d78b48ce-03b8-466e-ab87-46d2b97cfdaf' width='700' />
 
-### `npm run build`
+### 컴포넌트 다이어그램
+<img alt='컴포넌트 다이어그램' src='https://github.com/jaeyeong815/dutchpay/assets/85178602/c6f78481-b839-48fd-b647-84cf5bf8d9ea' width='700' />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 사용한 기술
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+React
+React-Router-Dom
+Recoil
+React-Testing-Library
+aws-amplify
+html-to-image
+React-bootstrap
+Styled-Components
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 구현 화면
 
-### `npm run eject`
+### 1. 모임 그룹 생성하기
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![그룹생성](https://github.com/jaeyeong815/dutchpay/assets/85178602/8ba36bbe-053c-4d83-9464-5d77302c7815)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 2. 그룹 멤버 추가하기
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![멤버추가](https://github.com/jaeyeong815/dutchpay/assets/85178602/28383016-9ae2-487f-a60c-071e465261e9)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 3. 지출 내역 추가하기
 
-## Learn More
+https://github.com/jaeyeong815/dutchpay/assets/85178602/f8fc5041-a272-42ed-8011-a2b1f0ebc6c7
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 4. 정산 내역 공유하기
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 4-1) 이미지 import
 
-### Code Splitting
+![이미지공유](https://github.com/jaeyeong815/dutchpay/assets/85178602/46117cc1-f1ed-4536-82a0-762a1577ad00)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 4-2) 링크 공유
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![링크공유](https://github.com/jaeyeong815/dutchpay/assets/85178602/670c45c0-e9d3-457b-abc4-34b7338a6ada)
