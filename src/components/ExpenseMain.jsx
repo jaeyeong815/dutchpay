@@ -35,7 +35,7 @@ export const ExpenseMain = () => {
           <RightPane />
         </Col>
       </Row>
-      <StyledShareBtn onClick={handleSharing} data-testId='share-btn'>
+      <StyledShareBtn onClick={handleSharing} data-testid='share-btn'>
         <ShareFill />
       </StyledShareBtn>
     </Container>
