@@ -43,7 +43,7 @@ export const AddMembers = () => {
 
   return (
     <CenteredOverlayForm
-      title={`${groupName} 그룹에 속한 사람들의 이름을 모두 적어 주세요.`}
+      title={`${groupName || ''} 그룹에 속한 사람들의 이름을 모두 적어 주세요.`}
       validated={validated}
       handleSubmit={handleSubmit}
     >

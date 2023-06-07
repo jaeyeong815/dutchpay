@@ -63,7 +63,7 @@ const RightPane = () => {
   return (
     <StyledRightPaneWrapper>
       <Row>
-        <StyledGroupName>{groupName || '그룹 이름'}</StyledGroupName>
+        <StyledGroupName>{groupName || ''}</StyledGroupName>
       </Row>
       <ExpenseTable />
     </StyledRightPaneWrapper>
