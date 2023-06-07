@@ -14,16 +14,14 @@ export const AddExpenseForm = () => {
   const guid = useRecoilValue(groupIdState);
 
   const today = new Date();
-  const [date, setDate] = useState(
-    [
-      today.getFullYear(),
-      `0${today.getMonth() + 1}`.slice(-2),
-      `0${today.getDate()}`.slice(-2),
-    ].join('-')
-  );
+  const initDate = [today.getFullYear(),
+  `0${today.getMonth() + 1}`.slice(-2),
+  `0${today.getDate()}`.slice(-2)].join('-')
+
+  const [date, setDate] = useState(initDate);
   const [desc, setDesc] = useState('');
-  const [amount, setAmount] = useState(undefined);
-  const [payer, setPayer] = useState(null);
+  const [amount, setAmount] = useState('');
+  const [payer, setPayer] = useState('');
 
   const [isDescValid, setIsDescValid] = useState(false);
   const [isAmountValid, setIsAmountValid] = useState(false);
@@ -63,8 +61,13 @@ export const AddExpenseForm = () => {
     if (checkFormValidity()) {
       const newExpense = { date, desc, amount, payer };
       saveExpense(newExpense);
+      setDate(initDate);
+      setDesc('');
+      setAmount('');
+      setPayer('');
     }
     setValidated(true);
+
   };
 
   return (
@@ -89,7 +92,6 @@ export const AddExpenseForm = () => {
               <Form.Control
                 type='text'
                 placeholder='비용에 대한 설명을 입력해 주세요'
-                isValid={isDescValid}
                 isInvalid={!isDescValid && validated}
                 value={desc}
                 onChange={({ target }) => setDesc(target.value)}
@@ -106,7 +108,6 @@ export const AddExpenseForm = () => {
               <Form.Control
                 type='number'
                 placeholder='비용은 얼마였나요?'
-                isValid={isAmountValid}
                 isInvalid={!isAmountValid && validated}
                 value={amount}
                 onChange={({ target }) => setAmount(target.value)}
@@ -118,9 +119,10 @@ export const AddExpenseForm = () => {
           </Col>
           <Col xs={12} lg={6}>
             <StyledFormGroup>
-              <Form.Select
-                defaultValue=''
-                isValid={isPayerValid}
+              <Form.Control
+                required
+                as='select'
+                value={payer}
                 isInvalid={!isPayerValid && validated}
                 onChange={({ target }) => setPayer(target.value)}
               >
@@ -132,7 +134,7 @@ export const AddExpenseForm = () => {
                     {member}
                   </option>
                 ))}
-              </Form.Select>
+              </Form.Control>
               <Form.Control.Feedback type='invalid' data-valid={isPayerValid}>
                 결제자를 선택해 주셔야 합니다.
               </Form.Control.Feedback>
