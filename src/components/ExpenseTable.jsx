@@ -2,7 +2,7 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { Table } from 'react-bootstrap';
 import { expensesState } from '../state/expenses';
-import { amountFormatting } from '../amountFormatting';
+import { amountFormatting } from '../utils/amountFormatting';
 import { OverlayWrapper } from './shared/OverlayWrapper';
 
 export const ExpenseTable = () => {

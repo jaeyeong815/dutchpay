@@ -1,12 +1,12 @@
-import { useRecoilValue } from "recoil";
-import { toPng } from "html-to-image";
-import styled from "styled-components";
+import { useRecoilValue } from 'recoil';
+import { toPng } from 'html-to-image';
+import styled from 'styled-components';
 
-import { expensesState } from "../state/expenses";
-import { groupMembersState } from "../state/groupMembers";
-import { amountFormatting } from "../amountFormatting";
+import { expensesState } from '../state/expenses';
+import { groupMembersState } from '../state/groupMembers';
+import { amountFormatting } from '../utils/amountFormatting';
 
-import * as Icon from "react-bootstrap-icons";
+import * as Icon from 'react-bootstrap-icons';
 
 const calculateMinimumTransaction = (expenses, members, amountPerPerson) => {
   const minimumTransactions = [];
@@ -73,16 +73,16 @@ export const SettlementSummary = () => {
 
   const exportToPng = (e) => {
     if (minimumTransactions.length === 0) {
-      alert("비용을 추가해주세요!");
+      alert('비용을 추가해주세요!');
       return;
     }
 
     toPng(e.currentTarget.parentNode, {
-      filter: (node) => node.tagName !== "BUTTON",
+      filter: (node) => node.tagName !== 'BUTTON',
     })
       .then((dataUrl) => {
-        const link = document.createElement("a");
-        link.download = "settlement-summary.png";
+        const link = document.createElement('a');
+        link.download = 'settlement-summary.png';
         link.href = dataUrl;
         link.click();
       })
@@ -114,7 +114,7 @@ export const SettlementSummary = () => {
             {minimumTransactions.map((transaction, idx) => (
               <li key={`transaction-${idx}`}>
                 <span>
-                  {transaction.sender}: {transaction.receiver}에게{" "}
+                  {transaction.sender}: {transaction.receiver}에게{' '}
                   {amountFormatting(transaction.amount)}원 보내기
                 </span>
               </li>
