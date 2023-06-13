@@ -52,14 +52,14 @@ Styled-Components
 
 ### 3. 지출 내역 추가하기
 
-https://github.com/jaeyeong815/dutchpay/assets/85178602/8829fdb1-580f-43f0-be95-4d7d60cb2d12
+https://github.com/jaeyeong815/dutchpay/assets/85178602/cc34e1d9-a61c-4cdb-951e-728567f170e0
 
 ### 4. 정산 내역 공유하기
 
 ### 4-1) 이미지 import
 
-![이미지공유](https://github.com/jaeyeong815/dutchpay/assets/85178602/070e19db-e646-46c2-839c-82fd41869cce)
+![이미지 공유](https://github.com/jaeyeong815/dutchpay/assets/85178602/5e88f8b4-1fb2-4aa0-8751-5c0133462903)
 
 ### 4-2) 링크 공유
 
-![링크공유](https://github.com/jaeyeong815/dutchpay/assets/85178602/85f672c9-b643-463b-952e-35110c0c2042)
+![링크 공유](https://github.com/jaeyeong815/dutchpay/assets/85178602/fdbceaee-4a7b-428d-b9a5-9678e32ea7fd)
