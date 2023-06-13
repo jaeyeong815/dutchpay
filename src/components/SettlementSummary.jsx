@@ -1,12 +1,12 @@
-import { useRecoilValue } from 'recoil';
-import { toPng } from 'html-to-image';
-import styled from 'styled-components';
+import { useRecoilValue } from "recoil";
+import { toPng } from "html-to-image";
+import styled from "styled-components";
 
-import { expensesState } from '../state/expenses';
-import { groupMembersState } from '../state/groupMembers';
-import { amountFormatting } from '../amountFormatting';
+import { expensesState } from "../state/expenses";
+import { groupMembersState } from "../state/groupMembers";
+import { amountFormatting } from "../amountFormatting";
 
-import * as Icon from 'react-bootstrap-icons';
+import * as Icon from "react-bootstrap-icons";
 
 const calculateMinimumTransaction = (expenses, members, amountPerPerson) => {
   const minimumTransactions = [];
@@ -73,23 +73,27 @@ export const SettlementSummary = () => {
 
   const exportToPng = (e) => {
     if (minimumTransactions.length === 0) {
-      alert('비용을 추가해주세요!');
+      alert("비용을 추가해주세요!");
       return;
     }
 
     toPng(e.currentTarget.parentNode, {
-      filter: (node) => node.tagName !== 'BUTTON',
+      filter: (node) => node.tagName !== "BUTTON",
     })
       .then((dataUrl) => {
-        const link = document.createElement('a');
-        link.download = 'settlement-summary.png';
+        const link = document.createElement("a");
+        link.download = "settlement-summary.png";
         link.href = dataUrl;
         link.click();
       })
       .catch((err) => console.log(err));
   };
 
-  const minimumTransactions = calculateMinimumTransaction(expenses, members, splitAmount);
+  const minimumTransactions = calculateMinimumTransaction(
+    expenses,
+    members,
+    splitAmount
+  );
   return (
     <StyledWrapper className='position-relative'>
       <SytledExportBtn data-testid='btn-download' onClick={exportToPng}>
@@ -100,7 +104,8 @@ export const SettlementSummary = () => {
         <>
           <StyledSummary color='royalblue' size={96}>
             <span>
-              {groupMembersCount}명이 총 {amountFormatting(totalExpenseAmount)}원 지출
+              {groupMembersCount}명이 총 {amountFormatting(totalExpenseAmount)}
+              원 지출
             </span>
             <br />
             <span>한 사람 당 {amountFormatting(splitAmount)}원</span>
@@ -109,7 +114,7 @@ export const SettlementSummary = () => {
             {minimumTransactions.map((transaction, idx) => (
               <li key={`transaction-${idx}`}>
                 <span>
-                  {transaction.sender}: {transaction.receiver}에게{' '}
+                  {transaction.sender}: {transaction.receiver}에게{" "}
                   {amountFormatting(transaction.amount)}원 보내기
                 </span>
               </li>
@@ -162,6 +167,7 @@ const StyledUl = styled.ul`
   margin-top: 31px;
   line-height: 150%;
   list-style-type: square;
+  text-align: start;
   word-break: keep-all;
 `;
 
