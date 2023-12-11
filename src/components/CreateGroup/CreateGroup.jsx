@@ -4,12 +4,12 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import { API } from 'aws-amplify';
 import { Form } from 'react-bootstrap';
 
-import { ROUTE_UTILS } from '../routes';
-import { CenteredOverlayForm } from './shared/CenteredOverlayForm';
-import { groupNameState } from '../state/groupName';
-import { groupIdState } from '../state/groupId';
+import { ROUTE_UTILS } from '../../routes';
+import { CenteredOverlayForm } from '../shared/CenteredOverlayForm';
+import { groupNameState } from '../../state/groupName';
+import { groupIdState } from '../../state/groupId';
 
-export const CreateGroup = () => {
+const CreateGroup = () => {
   const [validated, setValidated] = useState(false);
   const [validGroupName, setValidGroupName] = useState(false);
   const [groupName, setGroupName] = useRecoilState(groupNameState);
@@ -66,3 +66,5 @@ export const CreateGroup = () => {
     </CenteredOverlayForm>
   );
 };
+
+export default CreateGroup;

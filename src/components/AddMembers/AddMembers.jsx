@@ -6,12 +6,12 @@ import { Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import { InputTags } from 'react-bootstrap-tagsinput';
 
-import { ROUTE_UTILS } from '../routes';
-import { useGroupData } from '../hooks/useGroupData';
-import { CenteredOverlayForm } from './shared/CenteredOverlayForm';
-import { groupMembersState } from '../state/groupMembers';
+import { ROUTE_UTILS } from '../../routes';
+import { useGroupData } from '../../hooks/useGroupData';
+import { CenteredOverlayForm } from '../shared/CenteredOverlayForm';
+import { groupMembersState } from '../../state/groupMembers';
 
-export const AddMembers = () => {
+const AddMembers = () => {
   const { groupId, groupName, groupMembers } = useGroupData();
 
   const setGroupMembers = useSetRecoilState(groupMembersState);
@@ -61,6 +61,8 @@ export const AddMembers = () => {
     </CenteredOverlayForm>
   );
 };
+
+export default AddMembers;
 
 const StyledErrorMessage = styled.span`
   color: red;

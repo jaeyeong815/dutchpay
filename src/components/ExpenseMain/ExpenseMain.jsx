@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import { Col, Container, Row } from 'react-bootstrap';
 import { ShareFill } from 'react-bootstrap-icons';
 
-import { groupNameState } from '../state/groupName';
-import { ServiceLogo } from './shared/ServiceLogo';
-import { AddExpenseForm } from './AddExpenseForm';
-import { ExpenseTable } from './ExpenseTable';
-import { SettlementSummary } from './SettlementSummary';
-import { useGroupData } from '../hooks/useGroupData';
+import { groupNameState } from '../../state/groupName';
+import { ServiceLogo } from '../shared/ServiceLogo';
+import { AddExpenseForm } from '../AddExpenseForm';
+import { ExpenseTable } from '../ExpenseTable';
+import { SettlementSummary } from '../SettlementSummary';
+import { useGroupData } from '../../hooks/useGroupData';
 
-export const ExpenseMain = () => {
+const ExpenseMain = () => {
   useGroupData();
 
   const handleSharing = (event) => {
@@ -41,6 +41,8 @@ export const ExpenseMain = () => {
     </Container>
   );
 };
+
+export default ExpenseMain;
 
 const LeftPane = () => (
   <Container>

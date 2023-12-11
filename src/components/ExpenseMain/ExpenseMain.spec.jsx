@@ -3,7 +3,7 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { ExpenseMain } from './ExpenseMain';
-import { groupMembersState } from '../state/groupMembers';
+import { groupMembersState } from '../../state/groupMembers';
 
 const renderComponent = () => {
   render(
